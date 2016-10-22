@@ -1,0 +1,14 @@
+#!/bin/sh
+#Scenarios to simulate call flow
+SCENARIO_FILE=/root/Plivo/
+#media server IP or Remote sending address
+MS_IP=phone.plivo.com
+LOCAL_IP=10.0.2.15
+LOCAL_PORT=5062
+SFT_EXE=/root/Plivo/sipp
+FULL_PATH=$SCENARIO_FILE$1
+#########without log##########
+#$SFT_EXE -sf $FULL_PATH -i $LOCAL_IP -p $LOCAL_PORT $MS_IP -m 1 -aa
+##########with sipp log############
+$SFT_EXE -sf $FULL_PATH -i $LOCAL_IP -p $LOCAL_PORT $MS_IP -m 1 -aa -trace_screen -trace_msg -trace_err
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<!-- This program is free software; you can redistribute it and/or      -->
+<!-- modify it under the terms of the GNU General Public License as     -->
+<!-- published by the Free Software Foundation; either version 2 of the -->
+<!-- License, or (at your option) any later version.                    -->
+<!--                                                                    -->
+<!-- This program is distributed in the hope that it will be useful,    -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of     -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the      -->
+<!-- GNU General Public License for more details.                       -->
+<!--                                                                    -->
+<!-- You should have received a copy of the GNU General Public License  -->
+<!-- along with this program; if not, write to the                      -->
+<!-- Free Software Foundation, Inc.,                                    -->
+<!-- 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA             -->
+<!--                                                                    -->
+<!--                 Sipp default 'branchc' scenario.                   -->
+<!--                                                                    -->
+
+<scenario name="plivo sip call">
+  <pause milliseconds="4000"/>
+  <send retrans="500">
+    <![CDATA[
+
+      REGISTER sip:phone.plivo.com SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: testuser2 <sip:testuser2161020034424@phone.plivo.com>;tag=[call_number]
+      To: testuser2 <sip:testuser2161020034424@phone.plivo.com>
+      Call-ID: [call_id]
+      CSeq: 1 REGISTER
+      Contact: testuser2 <sip:testuser2161020034424@[local_ip]:[local_port]>
+      Content-Length: [len]
+      Content-Type: application/sdp
+      Max-Forwards: 70
+      User-Agent: Sipp/Linux
+      Expires: 300
+    ]]>
+  </send>
+
+  <recv response="401" auth="true">
+  </recv>
+  <send retrans="500">
+    <![CDATA[
+
+      REGISTER sip:phone.plivo.com SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: testuser2 <sip:testuser2161020034424@phone.plivo.com>;tag=[call_number]
+      To: testuser2 <sip:testuser2161020034424@phone.plivo.com>
+      Call-ID: [call_id]
+      CSeq: 1 REGISTER
+      Contact: <sip:testuser2161020034424@[local_ip]:[local_port]>
+      [authentication username=testuser2161020034424 password=test123]
+      Content-Length: 0
+      Expires: 300
+      User-Agent:Sipp/Linux
+      Max-Forwards: 70
+    ]]>
+  </send>
+
+  <recv response="200" rtd="true" next="5">
+  </recv>
+
+  <recv response="200">
+  </recv>
+
+  <label id="5"/>
+
+  <pause milliseconds="4000"/>
+
+  <!-- definition of the response time repartition table (unit is ms)   -->
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <!-- definition of the call length repartition table (unit is ms)     -->
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>
+
