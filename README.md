@@ -43,9 +43,9 @@ token_id='MAOGMZMGNJN2Q1OWZJOD'
 token_pass='YzNhNTc0MDAwNjU0YjNjMTRjYmM5M2JmMzI2MDI2'
 ENDURL='https://api.plivo.com/v1/Account/'+token_id+'/Endpoint/'
 
+
 class plivo:
 	def create_endpoint(self,username, password, alias):
-
 		code='failed'
 		# Create an Endpoint
 		params = {
@@ -93,9 +93,7 @@ Started all the scipts now going to wait for all of them to end
 ['UAC_Register', '']
 Reading the trace screen file -> /root/Plivo/UAC_Register_7764_screen.log
 
-#####################################   THIS IS THE OUTPUT FOR SIPP NO
-0 ###############################
-
+#####################################   THIS IS THE OUTPUT FOR SIPP NO 0 ###############################
 ------------------------------ Scenario Screen -------- [1-9]: Change Screen --
   Timestamp: Sat Oct 22 03:13:49 2016
 
@@ -119,12 +117,9 @@ Reading the trace screen file -> /root/Plivo/UAC_Register_7764_screen.log
 ------- Waiting for active calls to end. Press [q] again to force exit. -------
 
 ----------------------------- Statistics Screen ------- [1-9]: Change Screen --
-  Start Time             | 2016-10-22   03:13:41.274082
-1477086221.274082
-  Last Reset Time        | 2016-10-22   03:13:49.973919
-1477086229.973919
-  Current Time           | 2016-10-22   03:13:49.974365
-1477086229.974365
+  Start Time             | 2016-10-22   03:13:41.2740821477086221.274082
+  Last Reset Time        | 2016-10-22   03:13:49.9739191477086229.973919
+  Current Time           | 2016-10-22   03:13:49.9743651477086229.974365
 -------------------------+---------------------------+--------------------------
   Counter Name           | Periodic value            | Cumulative value
 -------------------------+---------------------------+--------------------------
@@ -171,8 +166,7 @@ Reading the trace screen file -> /root/Plivo/UAC_Register_7764_screen.log
 ['UAS_Register', '']
 Reading the trace screen file -> /root/Plivo/UAS_Register_7768_screen.log
 
-#####################################   THIS IS THE OUTPUT FOR SIPP NO
-1 ###############################
+#####################################   THIS IS THE OUTPUT FOR SIPP NO 1 ###############################
 
 ------------------------------ Scenario Screen -------- [1-9]: Change Screen --
   Timestamp: Sat Oct 22 03:13:50 2016
@@ -197,12 +191,9 @@ Reading the trace screen file -> /root/Plivo/UAS_Register_7768_screen.log
 ------- Waiting for active calls to end. Press [q] again to force exit. -------
 
 ----------------------------- Statistics Screen ------- [1-9]: Change Screen --
-  Start Time             | 2016-10-22   03:13:42.330922
-1477086222.330922
-  Last Reset Time        | 2016-10-22   03:13:50.910766
-1477086230.910766
-  Current Time           | 2016-10-22   03:13:50.910922
-1477086230.910922
+  Start Time             | 2016-10-22   03:13:42.3309221477086222.330922
+  Last Reset Time        | 2016-10-22   03:13:50.9107661477086230.910766
+  Current Time           | 2016-10-22   03:13:50.9109221477086230.910922
 -------------------------+---------------------------+--------------------------
   Counter Name           | Periodic value            | Cumulative value
 -------------------------+---------------------------+--------------------------
