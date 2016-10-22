@@ -1,15 +1,18 @@
 # plivo-project
 
+
 1.	Create two endpoints(sip) in the created account.For help, screenshots of UI are attached.
 
 Creation of two endpoints is also automated using RESTAPI. You just need to call below two object to create the endpoint:-
+```sh
 obj=plivo()
 ######Created endpoint 1 using RESTAPI #######
 #print obj.create_endpoint('testuser1', 'test123', 'TEST')
 ######Created endpoint 2 using RESTAPI #######
 #print obj.create_endpoint('testuser2', 'test123', 'TEST')
+```
 
-
+```sh
 Program Output:-
 [root@localhost ~]# python2.7 endpoint.py
 {
@@ -31,10 +34,10 @@ success
 testuser2 endpoint created successful
 success
 [root@localhost ~]#
-
+```
 
 Python code:-endpoint.py
-
+`
 import requests,json
 from requests.auth import HTTPBasicAuth
 
@@ -44,8 +47,11 @@ token_pass='YzNhNTc0MDAwNjU0YjNjMTRjYmM5M2JmMzI2MDI2'
 ENDURL='https://api.plivo.com/v1/Account/'+token_id+'/Endpoint/'
 
 
+
 class plivo:
+	
 	def create_endpoint(self,username, password, alias):
+	
 		code='failed'
 		# Create an Endpoint
 		params = {
@@ -69,19 +75,23 @@ obj=plivo()
 print obj.create_endpoint('testuser1', 'test123', 'TEST')
 print obj.create_endpoint('testuser2', 'test123', 'TEST')
 
-
+`
 
 2.	Register these two SIP endpoints.
 I have created a sipp scripts and automated it using python. 
 Sipp scripts:- UAC_Register.xml and UAS_Register.xml
 
 We just need to call the below object to run the scenario
+`
 Python code:-endpoint.py
 ###############
 obj=plivo()
 #####Only Register############
 obj.startsipp('sipp_client_uac','UAC_Register.xml','sipp_client_uas','UAS_Register.xml')
+`
 
+########
+```sh
 Program output:-
 [root@localhost Plivo]# python2.7 endpoint.py
 GOING TO START SIPP NOW ...
@@ -94,6 +104,7 @@ Started all the scipts now going to wait for all of them to end
 Reading the trace screen file -> /root/Plivo/UAC_Register_7764_screen.log
 
 #####################################   THIS IS THE OUTPUT FOR SIPP NO 0 ###############################
+
 ------------------------------ Scenario Screen -------- [1-9]: Change Screen --
   Timestamp: Sat Oct 22 03:13:49 2016
 
@@ -240,7 +251,7 @@ Reading the trace screen file -> /root/Plivo/UAS_Register_7768_screen.log
 Setting cumulativereturncode to 0
 TEST PASSED
 [root@localhost Plivo]#
-
+```
 
 
 3.	Make a call from one endpoint to second endpoint.
@@ -257,7 +268,7 @@ XML for End_point1(who is dialing):- UAC_UE1.xml
 XML for End_point2(who is receiving):- UAS_UE2.xml
 
 The logic is already implemented in endpoint.py, We just need to call the below object:-
-
+`
 Python code:-endpoint.py
 ################
 obj=plivo()
